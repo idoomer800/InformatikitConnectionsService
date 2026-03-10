@@ -1,0 +1,24 @@
+services:
+  webdav:
+    build: .
+    container_name: webdav_server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    environment:
+      - UID=1000
+      - GID=1000
+    restart: always
+
+  python_tester:
+    image: python:3.9-slim
+    container_name: connection_tester
+    depends_on:
+      webdav:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    working_dir: /app
+    # Install dependencies and trigger the tests
+    command: sh -c "pip install requests && python test_manager.py"

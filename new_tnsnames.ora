@@ -1,0 +1,58 @@
+PROD_DB =
+  (DESCRIPTION =
+    (ENABLE = BROKEN)
+    (ADDRESS =
+      (PROTOCOL = TCP)
+      (HOST = prod-db-01.example.com)
+      (PORT = 1521)
+    )
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = sales_prod.example.com)
+    )
+  )
+
+DEV_DB =
+  (DESCRIPTION =
+    (ADDRESS =
+      (PROTOCOL = TCP)
+      (HOST = localhost)
+      (PORT = 1521)
+    )
+    (CONNECT_DATA =
+      (SID = ORCL)
+    )
+  )
+
+TKMA.GANIM.MAAM =
+  (DESCRIPTION =
+    (ADDRESS =
+      (PROTOCOL = TCP)
+      (Host = database.yes.no)
+      (PORT = 1521)
+    )
+    (CONNECT_DATA =
+      (SID = TKMA)
+    )
+  )
+
+RAC_DB =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (LOAD_BALANCE = ON)
+      (FAILOVER = ON)
+      (ADDRESS =
+        (PROTOCOL = TCP)
+        (HOST = rac-node1.example.com)
+        (PORT = 1521)
+      )
+      (ADDRESS =
+        (PROTOCOL = TCP)
+        (HOST = rac-node2.example.com)
+        (PORT = 1521)
+      )
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = cluster_svc.example.com)
+    )
+  )
